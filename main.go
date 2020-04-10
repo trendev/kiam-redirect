@@ -6,9 +6,7 @@ import (
 )
 
 func redirect(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusPermanentRedirect)
-	w.Write([]byte(`{"message": "we moved to https://kiam.fr"}`))
+	http.Redirect(w, r, "https://kiam.fr", http.StatusPermanentRedirect)
 }
 
 func main() {
