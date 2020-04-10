@@ -13,5 +13,5 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", redirect)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":9000", nil))
 }
