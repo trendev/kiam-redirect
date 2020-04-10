@@ -21,6 +21,7 @@ func main() {
 		u, err := url.Parse(rawURL)
 		if err != nil {
 			log.Fatal(err)
+			panic("invalid URL")
 		} else {
 			newURL = u.String() // rawURL can also be used there
 		}

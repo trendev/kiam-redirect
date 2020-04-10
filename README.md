@@ -6,7 +6,7 @@ redirects all request from comptandye.fr to kiam.fr :smiley:
 `docker build -t trendev/kiam-redirect .`
 
 ### run
-`docker run -p 80:9000 -e URL="https://github.com/trendev" trendev/kiam-redirect`
+`docker run --rm -p 80:9000 -e URL="https://github.com/trendev" trendev/kiam-redirect`
 
 ### test
 `curl -vvv localhost`
