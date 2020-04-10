@@ -18,7 +18,7 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	if rawURL := os.Getenv("URL"); rawURL != "" {
-		u, err := url.Parse(rawURL)
+		u, err := url.ParseRequestURI(rawURL) // little control...
 		if err != nil {
 			log.Fatal(err)
 			panic("invalid URL")
