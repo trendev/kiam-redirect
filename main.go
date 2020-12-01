@@ -11,10 +11,6 @@ const baseURL = "https://kiam.fr"
 
 var newURL string
 
-func redirect(w http.ResponseWriter, r *http.Request) {
-	http.Redirect(w, r, newURL, http.StatusPermanentRedirect)
-}
-
 func main() {
 
 	if rawURL := os.Getenv("URL"); rawURL != "" {
@@ -29,8 +25,11 @@ func main() {
 		newURL = baseURL
 	}
 
-	log.Printf("Server starting, listening on port :9000 and redirecting request to %v", newURL)
+	log.Printf("Server starting, listening on port :9000 and redirecting request to %q", newURL)
 
-	http.HandleFunc("/", redirect)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, newURL, http.StatusPermanentRedirect)
+	})
+
 	log.Fatal(http.ListenAndServe(":9000", nil))
 }
